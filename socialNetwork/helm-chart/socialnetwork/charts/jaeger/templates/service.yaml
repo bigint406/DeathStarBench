@@ -1,2 +1,34 @@
-{{ include "socialnetwork.templates.baseService" . }}
- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ .Values.name }}
+spec:
+  type: {{ .Values.type | default .Values.global.serviceType }}
+  ports:  
+  {{- range .Values.ports }}
+  - name: "{{ .port }}"
+    port: {{ .port }}
+    {{- if .protocol}}
+    protocol: {{ .protocol }}
+    {{- end}}
+    targetPort: {{ .targetPort }}
+    {{- if .nodePort}}
+    nodePort: {{ .nodePort }}
+    {{- end}}
+  {{- end}}
+  selector:
+    service: {{ .Values.name }} 
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: "jaeger-nodeport"
+spec:
+  type: NodePort
+  ports:  
+  - name: "16686"
+    port: 16686
+    targetPort: 16686
+    nodePort: 16686
+  selector:
+    service: {{ .Values.name }} 
