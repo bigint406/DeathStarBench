@@ -23,6 +23,11 @@ initContainer:
   image: alpine/git
   imageVersion: latest
   name: alpine-container
+  env:
+  - name: http_proxy
+    value: "http://10.112.10.126:7890/"
+  - name: https_proxy
+    value: "http://10.112.10.126:7890/"
   volumeMounts:
   - name: lua-scripts
     mountPath: /lua-scripts
