@@ -1,3 +1,8 @@
+```
+helm install dsb-sn . -n dsb-sn --set-string global.nodeName="node9"
+```
+在启动之前需挂梯子，sb开发者用git clone拿配置文件
+
 # Social Network Microservices Helm Chart #
 
 # What is Helm Chart ##

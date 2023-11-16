@@ -16,6 +16,11 @@ spec:
         service: {{ .Values.name }}
         app: {{ .Values.name }}
     spec: 
+      {{- if $.Values.nodeName}}
+      nodeName: {{ .Values.nodeName}}
+      {{- else if $.Values.global.nodeName}}
+      nodeName: {{ .Values.global.nodeName }}
+      {{ end }}
       containers:
       {{- with .Values.container }}
       - name: "{{ .name }}"
