@@ -17,7 +17,8 @@ spec:
         app: {{ .Values.name }}
     spec:
       {{- if .Values.nodeName}}
-      nodeName: {{ .Values.nodeName }}
+      # nodeName: {{ .Values.nodeName }}
+      nodeName: node9
       {{ end }}
       containers:
       {{- with .Values.container }}

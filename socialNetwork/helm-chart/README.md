@@ -1,3 +1,7 @@
+```
+helm install dsb-sn . -n dsb-sn
+```
+
 # Social Network Microservices Helm Chart #
 
 # What is Helm Chart ##
