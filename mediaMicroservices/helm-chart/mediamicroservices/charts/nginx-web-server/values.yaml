@@ -1,8 +1,10 @@
 name: nginx-web-server
 
+type: NodePort
 ports:
   - port: 8080
     targetPort: 8080
+    nodePort: 8082
 
 container:
   image: yg397/openresty-thrift
@@ -31,7 +33,7 @@ initContainer:
   command: "/bin/sh"
   args: [
       "-c",
-      "git clone https://github.com/delimitrou/DeathStarBench.git /DeathStarBench &&
+      "git clone https://gitee.com/Biginteger/DeathStarBench.git /DeathStarBench &&
       cp -r /DeathStarBench/mediaMicroservices/gen-lua/* /gen-lua/ &&
       cp -r /DeathStarBench/mediaMicroservices/nginx-web-server/lua-scripts/* /lua-scripts/",
     ]
